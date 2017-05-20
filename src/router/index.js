@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import Home from '@/components/home'
 import Commend from '@/components/home/commend'
 import Toplist from '@/components/home/toplist'
-import Search from '@/components/home/search'
+import Search from '@/components/home/search'    
+import TopInfo from '@/components/home/topInfo' 
 Vue.use(Router)
 
 export default new Router({
@@ -29,6 +30,11 @@ export default new Router({
           component:Search
         }
       ]
+    },
+    {
+      path:'/topinfo/:id?',
+      name:'topinfo',
+      component:TopInfo
     }
   ]
 })

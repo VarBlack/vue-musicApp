@@ -1,27 +1,27 @@
 <template>
   <ul class="commend-list">
-      <li  v-for="(val,index) in songList" :key='val.id' @click="sendMusic(val.id)">
-        <!--<a href="javascript:;" @click="sendMusic(val.id)">-->
-            <div class="list_media">
-                <img :src="val.picUrl" :alt="val.songListDesc">
-                <span class="listen_count">
-                    <i></i>
-                    {{playnum(val.accessnum)}}
-                </span>
-                <span class="icon_play"></span>
-            </div>
-            <div class="list-info">
-                <p class="songName">{{val.songListDesc}}</p>
-                <p class="singer">{{val.songListAuthor}}</p>
-            </div>
-        <!--</a>-->
+      <li  v-for="(val,index) in songList" :key='val.id' @click="ishead(!isHead)">
+        <div class="list_media">
+            <img :src="val.picUrl" :alt="val.songListDesc">
+            <span class="listen_count">
+                <i></i>
+                {{playnum(val.accessnum)}}
+            </span>
+            <span class="icon_play"></span>
+        </div>
+        <div class="list-info">
+            <p class="songName">{{val.songListDesc}}</p>
+            <p class="singer">{{val.songListAuthor}} {{msg}}</p>
+        </div>
     </li>
   </ul>
 </template>
 <script>
+import {mapGetters, mapActions} from 'vuex'
 export default {
   props:['songList'],
   mounted(){
+      console.log(this.songList)
   },
   methods:{
       playnum(n){ //判断播放数大于1W吗
@@ -34,8 +34,11 @@ export default {
       },
       sendMusic(id){
           console.log(id)
-      }
-  }
+      },
+      ...mapActions(['ishead'])
+  },
+  computed: {...mapGetters(['isHead','msg'])},
+//   methods: {...mapActions(['ighead'])}
 }
 </script>
 

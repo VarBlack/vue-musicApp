@@ -4,14 +4,20 @@
      <ul class="top-navs">
         <router-link to="/commend" tag="li" active-class="router-link">推荐</router-link>
         <router-link to="/toplist" tag="li" active-class="router-link">排行榜</router-link>
-        <router-link to="/search" tag="li" active-class="router-link">搜索</router-link>
+        <router-link to="/search" tag="li" active-class="router-link">{{msg}}</router-link>
      </ul>
   </header>
   
 </template>
 <script>
+import {mapGetters, mapActions} from 'vuex'
 export default {
-  
+  data(){
+      return {
+          a:1
+      }
+  },
+  computed: {...mapGetters(['msg','isHead'])}
 }
 </script>
 <style>
@@ -19,9 +25,9 @@ export default {
         width: 100%;
         height: 12rem;
         background-color: red;
-        position: absolute;
+        /*position: absolute;
         left: 0;
-        top: 0;
+        top: 0;*/
     }
     h1,.top-navs{
         width: 100%;

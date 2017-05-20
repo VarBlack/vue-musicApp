@@ -10,6 +10,7 @@
           </li>
           <li v-for="val,i in date.hotkey" v-if="i < 9"  @click='hotSearch(val.k)'>{{val.k}}</li>
       </ul>
+      <!--搜索列表-->
       <ul class="search-list"  v-show="searchList.length">
         <li v-for="val,i in searchList">
             <div><img :src="val.img" alt=""></div>
@@ -39,9 +40,11 @@ export default {
   },
   methods:{
     hotSearch(key){
+      this.searchList = [];
       let url = `https://c.y.qq.com/soso/fcgi-bin/search_for_qq_cp?format=jsonp&n=20&w=${key}`
       // console.log(url)
        this.$http.jsonp("https://c.y.qq.com/soso/fcgi-bin/search_for_qq_cp?format=jsonp&n=20&w="+key+"",{jsonp:"jsonpCallback"}).then(res => {
+         console.log(res.body.data.song.list)
           res.body.data.song.list.forEach(val => {
               this.searchList.push({name:val.songname,
                   img:"https://y.gtimg.cn/music/photo_new/T002R150x150M000"+val.albummid+".jpg?max_age=2592000",

@@ -28,6 +28,7 @@ export default {
      this.$http.jsonp(url,{jsonp:'jsonpCallback'}).then(d =>{
                 this.slider = d.body.data.slider;
                 this.songList = d.body.data.songList;
+                console.log(d.body.data)
             })
     }
   
@@ -47,10 +48,10 @@ export default {
     float: left;
     border-radius: 0 2vh 2vh 0;
 }
-.commend-bottom{
+
+.commend-bottom {
     text-align: center;
     margin-top: 2rem;
     font-size: 2.5rem;
-    color: 
 }
 </style>
